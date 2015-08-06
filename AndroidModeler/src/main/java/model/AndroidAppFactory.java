@@ -8,6 +8,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import templates.ComponentTemplate;
+import templates.FeatureTemplate;
+import templates.JavaComponentTemplate;
 
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
@@ -99,6 +102,16 @@ public class AndroidAppFactory extends EFactoryImpl {
 			return createGCMBroadcastReceiver();
 		case AndroidAppPackage.GCM_ACTIVITY:
 			return createGCMActivity();
+		case AndroidAppPackage.TOPIC_MANAGER:
+			return createTopicManager();
+		case AndroidAppPackage.JAVA_APPLICATION:
+			return createJavaApplication();
+		case AndroidAppPackage.GCM_TOPIC_MANAGER:
+			return createGCMTopicManager();
+		case AndroidAppPackage.GCM_GROUP_MANAGER:
+			return createGCMGroupManager();
+		case AndroidAppPackage.GCM_MESSAGE_MANAGER:
+			return createGCMMessageManager();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -115,6 +128,11 @@ public class AndroidAppFactory extends EFactoryImpl {
 		switch (eDataType.getClassifierID()) {
 		case AndroidAppPackage.COMPONENT_TEMPLATE:
 			return createComponentTemplateFromString(eDataType, initialValue);
+		case AndroidAppPackage.FEATURE_TEMPLATE:
+			return createFeatureTemplateFromString(eDataType, initialValue);
+		case AndroidAppPackage.JAVA_COMPONENT_TEMPLATE:
+			return createJavaComponentTemplateFromString(eDataType,
+					initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '"
 					+ eDataType.getName() + "' is not a valid classifier");
@@ -131,6 +149,11 @@ public class AndroidAppFactory extends EFactoryImpl {
 		switch (eDataType.getClassifierID()) {
 		case AndroidAppPackage.COMPONENT_TEMPLATE:
 			return convertComponentTemplateToString(eDataType, instanceValue);
+		case AndroidAppPackage.FEATURE_TEMPLATE:
+			return convertFeatureTemplateToString(eDataType, instanceValue);
+		case AndroidAppPackage.JAVA_COMPONENT_TEMPLATE:
+			return convertJavaComponentTemplateToString(eDataType,
+					instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '"
 					+ eDataType.getName() + "' is not a valid classifier");
@@ -292,9 +315,59 @@ public class AndroidAppFactory extends EFactoryImpl {
 	 * 
 	 * @generated
 	 */
-	public templates.ComponentTemplate createComponentTemplateFromString(
+	public TopicManager createTopicManager() {
+		TopicManager topicManager = new TopicManager();
+		return topicManager;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public JavaApplication createJavaApplication() {
+		JavaApplication javaApplication = new JavaApplication();
+		return javaApplication;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public GCMTopicManager createGCMTopicManager() {
+		GCMTopicManager gcmTopicManager = new GCMTopicManager();
+		return gcmTopicManager;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public GCMGroupManager createGCMGroupManager() {
+		GCMGroupManager gcmGroupManager = new GCMGroupManager();
+		return gcmGroupManager;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public GCMMessageManager createGCMMessageManager() {
+		GCMMessageManager gcmMessageManager = new GCMMessageManager();
+		return gcmMessageManager;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public ComponentTemplate createComponentTemplateFromString(
 			EDataType eDataType, String initialValue) {
-		return (templates.ComponentTemplate) super.createFromString(eDataType,
+		return (ComponentTemplate) super.createFromString(eDataType,
 				initialValue);
 	}
 
@@ -304,6 +377,48 @@ public class AndroidAppFactory extends EFactoryImpl {
 	 * @generated
 	 */
 	public String convertComponentTemplateToString(EDataType eDataType,
+			Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public FeatureTemplate createFeatureTemplateFromString(EDataType eDataType,
+			String initialValue) {
+		return (FeatureTemplate) super
+				.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String convertFeatureTemplateToString(EDataType eDataType,
+			Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public JavaComponentTemplate createJavaComponentTemplateFromString(
+			EDataType eDataType, String initialValue) {
+		return (JavaComponentTemplate) super.createFromString(eDataType,
+				initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String convertJavaComponentTemplateToString(EDataType eDataType,
 			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}

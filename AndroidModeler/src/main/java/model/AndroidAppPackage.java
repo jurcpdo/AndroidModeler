@@ -9,6 +9,9 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import templates.ComponentTemplate;
+import templates.FeatureTemplate;
+import templates.JavaComponentTemplate;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -149,13 +152,22 @@ public class AndroidAppPackage extends EPackageImpl {
 	public static final int ANDROID_APPLICATION__JAVA_NAME = 8;
 
 	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ANDROID_APPLICATION__FEATURE = 9;
+
+	/**
 	 * The number of structural features of the '<em>Android Application</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ANDROID_APPLICATION_FEATURE_COUNT = 9;
+	public static final int ANDROID_APPLICATION_FEATURE_COUNT = 10;
 
 	/**
 	 * The operation id for the '<em>Add Component</em>' operation. <!--
@@ -194,13 +206,22 @@ public class AndroidAppPackage extends EPackageImpl {
 	public static final int ANDROID_APPLICATION___DEPENDS_ON__LIBRARY = 3;
 
 	/**
+	 * The operation id for the '<em>Add Feature</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ANDROID_APPLICATION___ADD_FEATURE__FEATURE = 4;
+
+	/**
 	 * The number of operations of the '<em>Android Application</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ANDROID_APPLICATION_OPERATION_COUNT = 4;
+	public static final int ANDROID_APPLICATION_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link model.Library <em>Library</em>}'
@@ -758,13 +779,22 @@ public class AndroidAppPackage extends EPackageImpl {
 	public static final int MODEL__ANDROID_APPS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Java Apps</b></em>' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MODEL__JAVA_APPS = 1;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MODEL_FEATURE_COUNT = 1;
+	public static final int MODEL_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Model</em>' class. <!--
@@ -1053,6 +1083,433 @@ public class AndroidAppPackage extends EPackageImpl {
 	public static final int GCM_ACTIVITY_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link model.Feature <em>Feature</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see model.Feature
+	 * @see model.AndroidAppPackage#getFeature()
+	 * @generated
+	 */
+	public static final int FEATURE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FEATURE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FEATURE_FEATURE_COUNT = 1;
+
+	/**
+	 * The operation id for the '<em>Component Added To</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FEATURE___COMPONENT_ADDED_TO__ANDROIDAPPLICATION = 0;
+
+	/**
+	 * The operation id for the '<em>Get Template</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FEATURE___GET_TEMPLATE = 1;
+
+	/**
+	 * The number of operations of the '<em>Feature</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FEATURE_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link model.TopicManager
+	 * <em>Topic Manager</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @see model.TopicManager
+	 * @see model.AndroidAppPackage#getTopicManager()
+	 * @generated
+	 */
+	public static final int TOPIC_MANAGER = 17;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TOPIC_MANAGER__NAME = FEATURE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Topic Manager</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TOPIC_MANAGER_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Component Added To</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TOPIC_MANAGER___COMPONENT_ADDED_TO__ANDROIDAPPLICATION = FEATURE___COMPONENT_ADDED_TO__ANDROIDAPPLICATION;
+
+	/**
+	 * The operation id for the '<em>Get Template</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TOPIC_MANAGER___GET_TEMPLATE = FEATURE___GET_TEMPLATE;
+
+	/**
+	 * The number of operations of the '<em>Topic Manager</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TOPIC_MANAGER_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link model.JavaApplication
+	 * <em>Java Application</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @see model.JavaApplication
+	 * @see model.AndroidAppPackage#getJavaApplication()
+	 * @generated
+	 */
+	public static final int JAVA_APPLICATION = 18;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Java Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION__JAVA_NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Components</b></em>' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION__COMPONENTS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Min SDK</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION__MIN_SDK = 3;
+
+	/**
+	 * The feature id for the '<em><b>Target SDK</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION__TARGET_SDK = 4;
+
+	/**
+	 * The number of structural features of the '<em>Java Application</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION_FEATURE_COUNT = 5;
+
+	/**
+	 * The operation id for the '<em>Add Component</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION___ADD_COMPONENT__COMPONENT = 0;
+
+	/**
+	 * The operation id for the '<em>Depends On</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION___DEPENDS_ON__LIBRARY = 1;
+
+	/**
+	 * The number of operations of the '<em>Java Application</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_APPLICATION_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link model.JavaComponent
+	 * <em>Java Component</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @see model.JavaComponent
+	 * @see model.AndroidAppPackage#getJavaComponent()
+	 * @generated
+	 */
+	public static final int JAVA_COMPONENT = 19;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_COMPONENT__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Java Component</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_COMPONENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The operation id for the '<em>Component Added To</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_COMPONENT___COMPONENT_ADDED_TO__JAVAAPPLICATION = 0;
+
+	/**
+	 * The operation id for the '<em>Get Template</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_COMPONENT___GET_TEMPLATE = 1;
+
+	/**
+	 * The number of operations of the '<em>Java Component</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JAVA_COMPONENT_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link model.GCMTopicManager
+	 * <em>GCM Topic Manager</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @see model.GCMTopicManager
+	 * @see model.AndroidAppPackage#getGCMTopicManager()
+	 * @generated
+	 */
+	public static final int GCM_TOPIC_MANAGER = 20;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_TOPIC_MANAGER__NAME = JAVA_COMPONENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>GCM Topic Manager</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_TOPIC_MANAGER_FEATURE_COUNT = JAVA_COMPONENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Component Added To</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_TOPIC_MANAGER___COMPONENT_ADDED_TO__JAVAAPPLICATION = JAVA_COMPONENT___COMPONENT_ADDED_TO__JAVAAPPLICATION;
+
+	/**
+	 * The operation id for the '<em>Get Template</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_TOPIC_MANAGER___GET_TEMPLATE = JAVA_COMPONENT___GET_TEMPLATE;
+
+	/**
+	 * The number of operations of the '<em>GCM Topic Manager</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_TOPIC_MANAGER_OPERATION_COUNT = JAVA_COMPONENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link model.GCMGroupManager
+	 * <em>GCM Group Manager</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @see model.GCMGroupManager
+	 * @see model.AndroidAppPackage#getGCMGroupManager()
+	 * @generated
+	 */
+	public static final int GCM_GROUP_MANAGER = 21;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_GROUP_MANAGER__NAME = JAVA_COMPONENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>GCM Group Manager</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_GROUP_MANAGER_FEATURE_COUNT = JAVA_COMPONENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Component Added To</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_GROUP_MANAGER___COMPONENT_ADDED_TO__JAVAAPPLICATION = JAVA_COMPONENT___COMPONENT_ADDED_TO__JAVAAPPLICATION;
+
+	/**
+	 * The operation id for the '<em>Get Template</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_GROUP_MANAGER___GET_TEMPLATE = JAVA_COMPONENT___GET_TEMPLATE;
+
+	/**
+	 * The number of operations of the '<em>GCM Group Manager</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_GROUP_MANAGER_OPERATION_COUNT = JAVA_COMPONENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link model.GCMMessageManager
+	 * <em>GCM Message Manager</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @see model.GCMMessageManager
+	 * @see model.AndroidAppPackage#getGCMMessageManager()
+	 * @generated
+	 */
+	public static final int GCM_MESSAGE_MANAGER = 22;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_MESSAGE_MANAGER__NAME = JAVA_COMPONENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>GCM Message Manager</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_MESSAGE_MANAGER_FEATURE_COUNT = JAVA_COMPONENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Component Added To</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_MESSAGE_MANAGER___COMPONENT_ADDED_TO__JAVAAPPLICATION = JAVA_COMPONENT___COMPONENT_ADDED_TO__JAVAAPPLICATION;
+
+	/**
+	 * The operation id for the '<em>Get Template</em>' operation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_MESSAGE_MANAGER___GET_TEMPLATE = JAVA_COMPONENT___GET_TEMPLATE;
+
+	/**
+	 * The number of operations of the '<em>GCM Message Manager</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GCM_MESSAGE_MANAGER_OPERATION_COUNT = JAVA_COMPONENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>Component Template</em>' data type. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -1060,7 +1517,27 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @see model.AndroidAppPackage#getComponentTemplate()
 	 * @generated
 	 */
-	public static final int COMPONENT_TEMPLATE = 16;
+	public static final int COMPONENT_TEMPLATE = 23;
+
+	/**
+	 * The meta object id for the '<em>Feature Template</em>' data type. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see templates.FeatureTemplate
+	 * @see model.AndroidAppPackage#getFeatureTemplate()
+	 * @generated
+	 */
+	public static final int FEATURE_TEMPLATE = 24;
+
+	/**
+	 * The meta object id for the '<em>Java Component Template</em>' data type.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see templates.JavaComponentTemplate
+	 * @see model.AndroidAppPackage#getJavaComponentTemplate()
+	 * @generated
+	 */
+	public static final int JAVA_COMPONENT_TEMPLATE = 25;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1082,6 +1559,55 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass componentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass featureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass topicManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass javaApplicationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass javaComponentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass gcmTopicManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass gcmGroupManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass gcmMessageManagerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1180,6 +1706,20 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EDataType componentTemplateEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EDataType featureTemplateEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EDataType javaComponentTemplateEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1398,6 +1938,21 @@ public class AndroidAppPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the reference list '
+	 * {@link model.AndroidApplication#getFeature <em>Feature</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference list '<em>Feature</em>'.
+	 * @see model.AndroidApplication#getFeature()
+	 * @see #getAndroidApplication()
+	 * @generated
+	 */
+	public EReference getAndroidApplication_Feature() {
+		return (EReference) androidApplicationEClass.getEStructuralFeatures()
+				.get(9);
+	}
+
+	/**
 	 * Returns the meta object for the '
 	 * {@link model.AndroidApplication#addComponent(model.Component)
 	 * <em>Add Component</em>}' operation. <!-- begin-user-doc --> <!--
@@ -1451,6 +2006,20 @@ public class AndroidAppPackage extends EPackageImpl {
 	 */
 	public EOperation getAndroidApplication__DependsOn__Library() {
 		return androidApplicationEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * Returns the meta object for the '
+	 * {@link model.AndroidApplication#addFeature(model.Feature)
+	 * <em>Add Feature</em>}' operation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for the '<em>Add Feature</em>' operation.
+	 * @see model.AndroidApplication#addFeature(model.Feature)
+	 * @generated
+	 */
+	public EOperation getAndroidApplication__AddFeature__Feature() {
+		return androidApplicationEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -1783,6 +2352,21 @@ public class AndroidAppPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '
+	 * {@link model.Model#getJavaApps <em>Java Apps</em>}'. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the containment reference list '
+	 *         <em>Java Apps</em>'.
+	 * @see model.Model#getJavaApps()
+	 * @see #getModel()
+	 * @generated
+	 */
+	public EReference getModel_JavaApps() {
+		return (EReference) modelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * Returns the meta object for class '{@link model.Metadata
 	 * <em>Metadata</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -1890,6 +2474,32 @@ public class AndroidAppPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for data type '{@link templates.FeatureTemplate
+	 * <em>Feature Template</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return the meta object for data type '<em>Feature Template</em>'.
+	 * @see templates.FeatureTemplate
+	 * @generated
+	 */
+	public EDataType getFeatureTemplate() {
+		return featureTemplateEDataType;
+	}
+
+	/**
+	 * Returns the meta object for data type '
+	 * {@link templates.JavaComponentTemplate <em>Java Component Template</em>}
+	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for data type '<em>Java Component Template</em>'.
+	 * @see templates.JavaComponentTemplate
+	 * @generated
+	 */
+	public EDataType getJavaComponentTemplate() {
+		return javaComponentTemplateEDataType;
+	}
+
+	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -1935,6 +2545,7 @@ public class AndroidAppPackage extends EPackageImpl {
 				ANDROID_APPLICATION__METADATAS);
 		createEAttribute(androidApplicationEClass,
 				ANDROID_APPLICATION__JAVA_NAME);
+		createEReference(androidApplicationEClass, ANDROID_APPLICATION__FEATURE);
 		createEOperation(androidApplicationEClass,
 				ANDROID_APPLICATION___ADD_COMPONENT__COMPONENT);
 		createEOperation(androidApplicationEClass,
@@ -1943,6 +2554,8 @@ public class AndroidAppPackage extends EPackageImpl {
 				ANDROID_APPLICATION___USES_PERMISSION__PERMISSION);
 		createEOperation(androidApplicationEClass,
 				ANDROID_APPLICATION___DEPENDS_ON__LIBRARY);
+		createEOperation(androidApplicationEClass,
+				ANDROID_APPLICATION___ADD_FEATURE__FEATURE);
 
 		libraryEClass = createEClass(LIBRARY);
 
@@ -1980,6 +2593,7 @@ public class AndroidAppPackage extends EPackageImpl {
 
 		modelEClass = createEClass(MODEL);
 		createEReference(modelEClass, MODEL__ANDROID_APPS);
+		createEReference(modelEClass, MODEL__JAVA_APPS);
 
 		metadataEClass = createEClass(METADATA);
 		createEAttribute(metadataEClass, METADATA__NAME);
@@ -1993,8 +2607,41 @@ public class AndroidAppPackage extends EPackageImpl {
 
 		gcmActivityEClass = createEClass(GCM_ACTIVITY);
 
+		featureEClass = createEClass(FEATURE);
+		createEAttribute(featureEClass, FEATURE__NAME);
+		createEOperation(featureEClass,
+				FEATURE___COMPONENT_ADDED_TO__ANDROIDAPPLICATION);
+		createEOperation(featureEClass, FEATURE___GET_TEMPLATE);
+
+		topicManagerEClass = createEClass(TOPIC_MANAGER);
+
+		javaApplicationEClass = createEClass(JAVA_APPLICATION);
+		createEAttribute(javaApplicationEClass, JAVA_APPLICATION__NAME);
+		createEAttribute(javaApplicationEClass, JAVA_APPLICATION__JAVA_NAME);
+		createEReference(javaApplicationEClass, JAVA_APPLICATION__COMPONENTS);
+		createEAttribute(javaApplicationEClass, JAVA_APPLICATION__MIN_SDK);
+		createEAttribute(javaApplicationEClass, JAVA_APPLICATION__TARGET_SDK);
+		createEOperation(javaApplicationEClass,
+				JAVA_APPLICATION___ADD_COMPONENT__COMPONENT);
+		createEOperation(javaApplicationEClass,
+				JAVA_APPLICATION___DEPENDS_ON__LIBRARY);
+
+		javaComponentEClass = createEClass(JAVA_COMPONENT);
+		createEAttribute(javaComponentEClass, JAVA_COMPONENT__NAME);
+		createEOperation(javaComponentEClass,
+				JAVA_COMPONENT___COMPONENT_ADDED_TO__JAVAAPPLICATION);
+		createEOperation(javaComponentEClass, JAVA_COMPONENT___GET_TEMPLATE);
+
+		gcmTopicManagerEClass = createEClass(GCM_TOPIC_MANAGER);
+
+		gcmGroupManagerEClass = createEClass(GCM_GROUP_MANAGER);
+
+		gcmMessageManagerEClass = createEClass(GCM_MESSAGE_MANAGER);
+
 		// Create data types
 		componentTemplateEDataType = createEDataType(COMPONENT_TEMPLATE);
+		featureTemplateEDataType = createEDataType(FEATURE_TEMPLATE);
+		javaComponentTemplateEDataType = createEDataType(JAVA_COMPONENT_TEMPLATE);
 	}
 
 	/**
@@ -2033,6 +2680,10 @@ public class AndroidAppPackage extends EPackageImpl {
 		gcmBroadcastReceiverEClass.getESuperTypes().add(
 				this.getBroadcastReceiver());
 		gcmActivityEClass.getESuperTypes().add(this.getActivity());
+		topicManagerEClass.getESuperTypes().add(this.getFeature());
+		gcmTopicManagerEClass.getESuperTypes().add(this.getJavaComponent());
+		gcmGroupManagerEClass.getESuperTypes().add(this.getJavaComponent());
+		gcmMessageManagerEClass.getESuperTypes().add(this.getJavaComponent());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(androidApplicationEClass, AndroidApplication.class,
@@ -2076,12 +2727,15 @@ public class AndroidAppPackage extends EPackageImpl {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		getAndroidApplication_Metadatas().getEKeys().add(
-				this.getMetadata_Name());
 		initEAttribute(getAndroidApplication_JavaName(),
 				ecorePackage.getEString(), "javaName", null, 0, 1,
 				AndroidApplication.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getAndroidApplication_Feature(), this.getFeature(),
+				null, "feature", null, 0, -1, AndroidApplication.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
 		EOperation op = initEOperation(
@@ -2105,6 +2759,11 @@ public class AndroidAppPackage extends EPackageImpl {
 		op = initEOperation(getAndroidApplication__DependsOn__Library(), null,
 				"dependsOn", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLibrary(), "library", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		op = initEOperation(getAndroidApplication__AddFeature__Feature(), null,
+				"addFeature", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFeature(), "feature", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
 
 		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT,
@@ -2200,6 +2859,10 @@ public class AndroidAppPackage extends EPackageImpl {
 				null, "androidApps", null, 0, -1, Model.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModel_JavaApps(), this.getJavaApplication(), null,
+				"javaApps", null, 0, -1, Model.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2228,13 +2891,366 @@ public class AndroidAppPackage extends EPackageImpl {
 		initEClass(gcmActivityEClass, GCMActivity.class, "GCMActivity",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(featureEClass, Feature.class, "Feature", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name",
+				null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		op = initEOperation(getFeature__ComponentAddedTo__AndroidApplication(),
+				null, "componentAddedTo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAndroidApplication(), "app", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEOperation(getFeature__GetTemplate(), this.getFeatureTemplate(),
+				"getTemplate", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(topicManagerEClass, TopicManager.class, "TopicManager",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaApplicationEClass, JavaApplication.class,
+				"JavaApplication", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJavaApplication_Name(), ecorePackage.getEString(),
+				"name", null, 0, 1, JavaApplication.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJavaApplication_JavaName(),
+				ecorePackage.getEString(), "javaName", null, 0, 1,
+				JavaApplication.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getJavaApplication_Components(),
+				this.getJavaComponent(), null, "components", null, 0, -1,
+				JavaApplication.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJavaApplication_MinSDK(), ecorePackage.getEInt(),
+				"minSDK", null, 0, 1, JavaApplication.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJavaApplication_TargetSDK(), ecorePackage.getEInt(),
+				"targetSDK", null, 0, 1, JavaApplication.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getJavaApplication__AddComponent__Component(),
+				null, "addComponent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getComponent(), "component", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		op = initEOperation(getJavaApplication__DependsOn__Library(), null,
+				"dependsOn", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getLibrary(), "library", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEClass(javaComponentEClass, JavaComponent.class, "JavaComponent",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJavaComponent_Name(), ecorePackage.getEString(),
+				"name", null, 0, 1, JavaComponent.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(
+				getJavaComponent__ComponentAddedTo__JavaApplication(), null,
+				"componentAddedTo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJavaApplication(), "app", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEOperation(getJavaComponent__GetTemplate(),
+				this.getJavaComponentTemplate(), "getTemplate", 1, 1,
+				IS_UNIQUE, IS_ORDERED);
+
+		initEClass(gcmTopicManagerEClass, GCMTopicManager.class,
+				"GCMTopicManager", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(gcmGroupManagerEClass, GCMGroupManager.class,
+				"GCMGroupManager", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(gcmMessageManagerEClass, GCMMessageManager.class,
+				"GCMMessageManager", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize data types
-		initEDataType(componentTemplateEDataType,
-				templates.ComponentTemplate.class, "ComponentTemplate",
+		initEDataType(componentTemplateEDataType, ComponentTemplate.class,
+				"ComponentTemplate", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(featureTemplateEDataType, FeatureTemplate.class,
+				"FeatureTemplate", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(javaComponentTemplateEDataType,
+				JavaComponentTemplate.class, "JavaComponentTemplate",
 				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
+	}
+
+	public EClass getFeature() {
+		return featureEClass;
+	}
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Feature#getName
+	 * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see model.Feature#getName()
+	 * @see #getFeature()
+	 * @generated
+	 */
+	public EAttribute getFeature_Name() {
+		return (EAttribute) featureEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the '
+	 * {@link model.Feature#componentAddedTo(model.AndroidApplication)
+	 * <em>Component Added To</em>}' operation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for the '<em>Component Added To</em>' operation.
+	 * @see model.Feature#componentAddedTo(model.AndroidApplication)
+	 * @generated
+	 */
+	public EOperation getFeature__ComponentAddedTo__AndroidApplication() {
+		return featureEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the '{@link model.Feature#getTemplate()
+	 * <em>Get Template</em>}' operation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for the '<em>Get Template</em>' operation.
+	 * @see model.Feature#getTemplate()
+	 * @generated
+	 */
+	public EOperation getFeature__GetTemplate() {
+		return featureEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * Returns the meta object for class '{@link model.TopicManager
+	 * <em>Topic Manager</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Topic Manager</em>'.
+	 * @see model.TopicManager
+	 * @generated
+	 */
+	public EClass getTopicManager() {
+		return topicManagerEClass;
+	}
+
+	/**
+	 * Returns the meta object for class '{@link model.JavaApplication
+	 * <em>Java Application</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return the meta object for class '<em>Java Application</em>'.
+	 * @see model.JavaApplication
+	 * @generated
+	 */
+	public EClass getJavaApplication() {
+		return javaApplicationEClass;
+	}
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link model.JavaApplication#getName <em>Name</em>}'. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see model.JavaApplication#getName()
+	 * @see #getJavaApplication()
+	 * @generated
+	 */
+	public EAttribute getJavaApplication_Name() {
+		return (EAttribute) javaApplicationEClass.getEStructuralFeatures().get(
+				0);
+	}
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link model.JavaApplication#getJavaName <em>Java Name</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Java Name</em>'.
+	 * @see model.JavaApplication#getJavaName()
+	 * @see #getJavaApplication()
+	 * @generated
+	 */
+	public EAttribute getJavaApplication_JavaName() {
+		return (EAttribute) javaApplicationEClass.getEStructuralFeatures().get(
+				1);
+	}
+
+	/**
+	 * Returns the meta object for the reference list '
+	 * {@link model.JavaApplication#getComponents <em>Components</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference list '<em>Components</em>'.
+	 * @see model.JavaApplication#getComponents()
+	 * @see #getJavaApplication()
+	 * @generated
+	 */
+	public EReference getJavaApplication_Components() {
+		return (EReference) javaApplicationEClass.getEStructuralFeatures().get(
+				2);
+	}
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link model.JavaApplication#getMinSDK <em>Min SDK</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Min SDK</em>'.
+	 * @see model.JavaApplication#getMinSDK()
+	 * @see #getJavaApplication()
+	 * @generated
+	 */
+	public EAttribute getJavaApplication_MinSDK() {
+		return (EAttribute) javaApplicationEClass.getEStructuralFeatures().get(
+				3);
+	}
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link model.JavaApplication#getTargetSDK <em>Target SDK</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Target SDK</em>'.
+	 * @see model.JavaApplication#getTargetSDK()
+	 * @see #getJavaApplication()
+	 * @generated
+	 */
+	public EAttribute getJavaApplication_TargetSDK() {
+		return (EAttribute) javaApplicationEClass.getEStructuralFeatures().get(
+				4);
+	}
+
+	/**
+	 * Returns the meta object for the '
+	 * {@link model.JavaApplication#addComponent(model.Component)
+	 * <em>Add Component</em>}' operation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for the '<em>Add Component</em>' operation.
+	 * @see model.JavaApplication#addComponent(model.Component)
+	 * @generated
+	 */
+	public EOperation getJavaApplication__AddComponent__Component() {
+		return javaApplicationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the '
+	 * {@link model.JavaApplication#dependsOn(model.Library)
+	 * <em>Depends On</em>}' operation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for the '<em>Depends On</em>' operation.
+	 * @see model.JavaApplication#dependsOn(model.Library)
+	 * @generated
+	 */
+	public EOperation getJavaApplication__DependsOn__Library() {
+		return javaApplicationEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * Returns the meta object for class '{@link model.JavaComponent
+	 * <em>Java Component</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Java Component</em>'.
+	 * @see model.JavaComponent
+	 * @generated
+	 */
+	public EClass getJavaComponent() {
+		return javaComponentEClass;
+	}
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link model.JavaComponent#getName <em>Name</em>}'. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see model.JavaComponent#getName()
+	 * @see #getJavaComponent()
+	 * @generated
+	 */
+	public EAttribute getJavaComponent_Name() {
+		return (EAttribute) javaComponentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the '
+	 * {@link model.JavaComponent#componentAddedTo(model.JavaApplication)
+	 * <em>Component Added To</em>}' operation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for the '<em>Component Added To</em>' operation.
+	 * @see model.JavaComponent#componentAddedTo(model.JavaApplication)
+	 * @generated
+	 */
+	public EOperation getJavaComponent__ComponentAddedTo__JavaApplication() {
+		return javaComponentEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the '
+	 * {@link model.JavaComponent#getTemplate() <em>Get Template</em>}'
+	 * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the '<em>Get Template</em>' operation.
+	 * @see model.JavaComponent#getTemplate()
+	 * @generated
+	 */
+	public EOperation getJavaComponent__GetTemplate() {
+		return javaComponentEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * Returns the meta object for class '{@link model.GCMTopicManager
+	 * <em>GCM Topic Manager</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return the meta object for class '<em>GCM Topic Manager</em>'.
+	 * @see model.GCMTopicManager
+	 * @generated
+	 */
+	public EClass getGCMTopicManager() {
+		return gcmTopicManagerEClass;
+	}
+
+	/**
+	 * Returns the meta object for class '{@link model.GCMGroupManager
+	 * <em>GCM Group Manager</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return the meta object for class '<em>GCM Group Manager</em>'.
+	 * @see model.GCMGroupManager
+	 * @generated
+	 */
+	public EClass getGCMGroupManager() {
+		return gcmGroupManagerEClass;
+	}
+
+	/**
+	 * Returns the meta object for class '{@link model.GCMMessageManager
+	 * <em>GCM Message Manager</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return the meta object for class '<em>GCM Message Manager</em>'.
+	 * @see model.GCMMessageManager
+	 * @generated
+	 */
+	public EClass getGCMMessageManager() {
+		return gcmMessageManagerEClass;
 	}
 
 } // AndroidAppPackage

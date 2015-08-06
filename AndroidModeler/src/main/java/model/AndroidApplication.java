@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.BasicInternalEList;
  * <li>{@link model.AndroidApplication#getTargetSDK <em>Target SDK</em>}</li>
  * <li>{@link model.AndroidApplication#getMetadatas <em>Metadatas</em>}</li>
  * <li>{@link model.AndroidApplication#getJavaName <em>Java Name</em>}</li>
+ * <li>{@link model.AndroidApplication#getFeature <em>Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -162,6 +163,16 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected String javaName = JAVA_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getFeature() <em>Feature</em>}'
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Feature> feature;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -404,6 +415,25 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Feature</b></em>' reference list. The
+	 * list contents are of type {@link model.Feature}. <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Feature</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the value of the '<em>Feature</em>' reference list.
+	 * @generated
+	 */
+	public EList<Feature> getFeature() {
+		if (feature == null) {
+			feature = new BasicInternalEList<Feature>(Feature.class);
+		}
+		return feature;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated NOT
@@ -443,6 +473,16 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @generated NOT
+	 */
+	public void addFeature(Feature feature) {
+		getFeature().add(feature);
+		feature.componentAddedTo(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -466,6 +506,8 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 			return getMetadatas();
 		case AndroidAppPackage.ANDROID_APPLICATION__JAVA_NAME:
 			return getJavaName();
+		case AndroidAppPackage.ANDROID_APPLICATION__FEATURE:
+			return getFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -511,6 +553,10 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 		case AndroidAppPackage.ANDROID_APPLICATION__JAVA_NAME:
 			setJavaName((String) newValue);
 			return;
+		case AndroidAppPackage.ANDROID_APPLICATION__FEATURE:
+			getFeature().clear();
+			getFeature().addAll((Collection<? extends Feature>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -550,6 +596,9 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 		case AndroidAppPackage.ANDROID_APPLICATION__JAVA_NAME:
 			setJavaName(JAVA_NAME_EDEFAULT);
 			return;
+		case AndroidAppPackage.ANDROID_APPLICATION__FEATURE:
+			getFeature().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -582,6 +631,8 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 		case AndroidAppPackage.ANDROID_APPLICATION__JAVA_NAME:
 			return JAVA_NAME_EDEFAULT == null ? javaName != null
 					: !JAVA_NAME_EDEFAULT.equals(javaName);
+		case AndroidAppPackage.ANDROID_APPLICATION__FEATURE:
+			return feature != null && !feature.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -606,6 +657,9 @@ public class AndroidApplication extends MinimalEObjectImpl.Container implements
 			return null;
 		case AndroidAppPackage.ANDROID_APPLICATION___DEPENDS_ON__LIBRARY:
 			dependsOn((Library) arguments.get(0));
+			return null;
+		case AndroidAppPackage.ANDROID_APPLICATION___ADD_FEATURE__FEATURE:
+			addFeature((Feature) arguments.get(0));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

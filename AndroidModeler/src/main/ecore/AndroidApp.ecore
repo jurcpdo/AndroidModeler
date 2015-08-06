@@ -14,6 +14,9 @@
     <eOperations name="dependsOn">
       <eParameters name="library" eType="#//Library"/>
     </eOperations>
+    <eOperations name="addFeature">
+      <eParameters name="feature" eType="#//Feature"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//Library"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
@@ -27,6 +30,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="metadatas" upperBound="-1"
         eType="#//Metadata"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" upperBound="-1"
+        eType="#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Library"/>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true">
@@ -66,6 +71,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Model">
     <eStructuralFeatures xsi:type="ecore:EReference" name="androidApps" upperBound="-1"
         eType="#//AndroidApplication" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="javaApps" upperBound="-1"
+        eType="#//JavaApplication" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Metadata">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -77,4 +84,38 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GCMActivity" eSuperTypes="#//Activity"/>
   <eClassifiers xsi:type="ecore:EDataType" name="ComponentTemplate" instanceClassName="templates.ComponentTemplate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true">
+    <eOperations name="componentAddedTo">
+      <eParameters name="app" eType="#//AndroidApplication"/>
+    </eOperations>
+    <eOperations name="getTemplate" lowerBound="1" eType="#//FeatureTemplate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FeatureTemplate" instanceClassName="templates.FeatureTemplate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TopicManager" eSuperTypes="#//Feature"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaApplication">
+    <eOperations name="addComponent">
+      <eParameters name="component" eType="#//Component"/>
+    </eOperations>
+    <eOperations name="dependsOn">
+      <eParameters name="library" eType="#//Library"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+        eType="#//JavaComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minSDK" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetSDK" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaComponent" abstract="true">
+    <eOperations name="componentAddedTo">
+      <eParameters name="app" eType="#//JavaApplication"/>
+    </eOperations>
+    <eOperations name="getTemplate" lowerBound="1" eType="#//JavaComponentTemplate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaComponentTemplate" instanceClassName="templates.JavaComponentTemplate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GCMTopicManager" eSuperTypes="#//JavaComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GCMGroupManager" eSuperTypes="#//JavaComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GCMMessageManager" eSuperTypes="#//JavaComponent"/>
 </ecore:EPackage>

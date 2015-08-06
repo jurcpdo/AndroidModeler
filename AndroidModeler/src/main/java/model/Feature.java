@@ -3,31 +3,30 @@
 package model;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.BasicInternalEList;
 
-import templates.ComponentTemplate;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import templates.FeatureTemplate;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Component</b></em>'. <!-- end-user-doc -->
+ * <em><b>Feature</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link model.Component#getName <em>Name</em>}</li>
- * <li>{@link model.Component#getIntentFilters <em>Intent Filters</em>}</li>
+ * <li>{@link model.Feature#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class Component extends MinimalEObjectImpl.Container implements
+public abstract class Feature extends MinimalEObjectImpl.Container implements
 		EObject {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -50,22 +49,11 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getIntentFilters()
-	 * <em>Intent Filters</em>}' reference list. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @see #getIntentFilters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<IntentFilter> intentFilters;
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	protected Component() {
+	protected Feature() {
 		super();
 	}
 
@@ -76,7 +64,7 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AndroidAppPackage.eINSTANCE.getComponent();
+		return AndroidAppPackage.eINSTANCE.getFeature();
 	}
 
 	/**
@@ -97,7 +85,7 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * Sets the value of the '{@link model.Component#getName <em>Name</em>}'
+	 * Sets the value of the '{@link model.Feature#getName <em>Name</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @param value
@@ -107,27 +95,6 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	 */
 	public void setName(String newName) {
 		name = newName;
-	}
-
-	/**
-	 * Returns the value of the '<em><b>Intent Filters</b></em>' reference list.
-	 * The list contents are of type {@link model.IntentFilter}. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Intent Filters</em>' reference list isn't
-	 * clear, there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Intent Filters</em>' reference list.
-	 * @generated
-	 */
-	public EList<IntentFilter> getIntentFilters() {
-		if (intentFilters == null) {
-			intentFilters = new BasicInternalEList<IntentFilter>(
-					IntentFilter.class);
-		}
-		return intentFilters;
 	}
 
 	/**
@@ -144,14 +111,7 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	 * 
 	 * @generated NOT
 	 */
-	public abstract String getXMLTag();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	public abstract ComponentTemplate getTemplate();
+	public abstract FeatureTemplate getTemplate();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -161,10 +121,8 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AndroidAppPackage.COMPONENT__NAME:
+		case AndroidAppPackage.FEATURE__NAME:
 			return getName();
-		case AndroidAppPackage.COMPONENT__INTENT_FILTERS:
-			return getIntentFilters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -174,17 +132,11 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	 * 
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AndroidAppPackage.COMPONENT__NAME:
+		case AndroidAppPackage.FEATURE__NAME:
 			setName((String) newValue);
-			return;
-		case AndroidAppPackage.COMPONENT__INTENT_FILTERS:
-			getIntentFilters().clear();
-			getIntentFilters().addAll(
-					(Collection<? extends IntentFilter>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -198,11 +150,8 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AndroidAppPackage.COMPONENT__NAME:
+		case AndroidAppPackage.FEATURE__NAME:
 			setName(NAME_EDEFAULT);
-			return;
-		case AndroidAppPackage.COMPONENT__INTENT_FILTERS:
-			getIntentFilters().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -216,11 +165,9 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AndroidAppPackage.COMPONENT__NAME:
+		case AndroidAppPackage.FEATURE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
 					.equals(name);
-		case AndroidAppPackage.COMPONENT__INTENT_FILTERS:
-			return intentFilters != null && !intentFilters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -234,12 +181,10 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 	public Object eInvoke(int operationID, EList<?> arguments)
 			throws InvocationTargetException {
 		switch (operationID) {
-		case AndroidAppPackage.COMPONENT___COMPONENT_ADDED_TO__ANDROIDAPPLICATION:
+		case AndroidAppPackage.FEATURE___COMPONENT_ADDED_TO__ANDROIDAPPLICATION:
 			componentAddedTo((AndroidApplication) arguments.get(0));
 			return null;
-		case AndroidAppPackage.COMPONENT___GET_XML_TAG:
-			return getXMLTag();
-		case AndroidAppPackage.COMPONENT___GET_TEMPLATE:
+		case AndroidAppPackage.FEATURE___GET_TEMPLATE:
 			return getTemplate();
 		}
 		return super.eInvoke(operationID, arguments);
@@ -262,4 +207,4 @@ public abstract class Component extends MinimalEObjectImpl.Container implements
 		return result.toString();
 	}
 
-} // Component
+} // Feature

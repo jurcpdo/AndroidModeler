@@ -8,12 +8,15 @@ import model.GCMBroadcastReceiver;
 import model.GCMIntentService;
 import model.Model;
 import model.Service;
+import model.TopicManager;
 import parser.DroidModelerParser.ActivityDefinitionContext;
 import parser.DroidModelerParser.AppDefinitionContext;
 import parser.DroidModelerParser.BroadcastReceiverDefinitionContext;
 import parser.DroidModelerParser.GcmFeatureDefinitionContext;
+import parser.DroidModelerParser.GroupDefinitionContext;
 import parser.DroidModelerParser.PackageDefinitionContext;
 import parser.DroidModelerParser.ServiceDefinitionContext;
+import parser.DroidModelerParser.TopicDefinitionContext;
 
 public class TreeParser extends DroidModelerBaseListener {
 	private AndroidAppFactory factory = new AndroidAppFactory();
@@ -102,6 +105,22 @@ public class TreeParser extends DroidModelerBaseListener {
 
 		if (lastGCMIntentServ != null)
 			lastGCMRecv.setStartIntentService(lastGCMIntentServ);
+	}
+	
+	@Override
+	public void enterTopicDefinition(TopicDefinitionContext ctx) {
+		TopicManager topics = null;
+		if (inGcmDefinition) {
+			topics = factory.createTopicManager();
+			topics.setName(ctx.name.getText());
+			app.addFeature(topics);
+		}
+	}
+
+	@Override
+	public void enterGroupDefinition(GroupDefinitionContext ctx) {
+		// TODO Auto-generated method stub
+		super.enterGroupDefinition(ctx);
 	}
 
 	public Model getModel() {

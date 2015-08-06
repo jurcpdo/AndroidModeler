@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 
 import model.AndroidApplication;
 import model.Component;
+import model.Feature;
 import model.Model;
 
 import org.antlr.v4.runtime.ANTLRFileStream;
@@ -21,7 +22,8 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import templates.ComponentTemplate;
 import templates.GradleTemplate;
 import templates.ManifestTemplate;
-import util.XMLFormatter;
+import templates.FeatureTemplate;
+import util.*;
 
 public class App {
 	public static void err(String errMsg) {
@@ -81,6 +83,13 @@ public class App {
 			ComponentTemplate template = c.getTemplate();
 			String code = template.generate(app, c);
 			Path classFile = classDir.resolve(c.getName() + ".java");
+			writeToFile(classFile, code);
+		}
+		
+		for (Feature f : app.getFeature()) {
+			FeatureTemplate template = f.getTemplate();
+			String code = template.generate(app, f);
+			Path classFile = classDir.resolve(f.getName() + ".java");
 			writeToFile(classFile, code);
 		}
 	}

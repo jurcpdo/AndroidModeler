@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/DroidModeler/src" creationCommands="false" creationIcons="false"
-    modelPluginID="DroidModeler" templateDirectory="" modelName="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    suppressEMFMetaData="true" suppressEMFModelTags="true" suppressInterfaces="true"
-    codeFormatting="true" commentFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
-    bundleManifest="false" suppressNotification="true" complianceLevel="7.0" copyrightFields="false"
-    language="" packedEnums="true" classNamePattern="" operationReflection="true"
-    importOrganizing="true">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/AndroidModeler/src/main/java" creationCommands="false"
+    creationIcons="false" editDirectory="/AndroidModeler.edit/src" editorDirectory="/AndroidModeler.editor/src"
+    modelPluginID="AndroidModeler" templateDirectory="" modelName="" modelPluginClass=""
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFMetaData="true"
+    suppressEMFModelTags="true" suppressInterfaces="true" codeFormatting="true" commentFormatting="true"
+    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" bundleManifest="false"
+    suppressNotification="true" complianceLevel="7.0" copyrightFields="false" editPluginID="AndroidModeler.edit"
+    editorPluginID="AndroidModeler.editor" language="" packedEnums="true" classNamePattern=""
+    operationReflection="true" importOrganizing="true">
   <foreignModel>AndroidApp.ecore</foreignModel>
   <genPackages prefix="AndroidApp" adapterFactory="false" classPackageSuffix="" utilityPackageSuffix=""
       providerPackageSuffix="" presentationPackageSuffix="" testsPackageSuffix=""
       generateExampleClass="false" literalsInterface="false" multipleEditorPages="false"
       generateModelWizard="false" childCreationExtenders="true" ecorePackage="AndroidApp.ecore#/">
+    <genDataTypes ecoreDataType="AndroidApp.ecore#//ComponentTemplate"/>
+    <genDataTypes ecoreDataType="AndroidApp.ecore#//FeatureTemplate"/>
+    <genDataTypes ecoreDataType="AndroidApp.ecore#//JavaComponentTemplate"/>
     <genClasses ecoreClass="AndroidApp.ecore#//AndroidApplication">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//AndroidApplication/dependencies"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//AndroidApplication/components"/>
@@ -21,6 +26,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//AndroidApplication/minSDK"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//AndroidApplication/targetSDK"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//AndroidApplication/metadatas"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//AndroidApplication/javaName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//AndroidApplication/feature"/>
       <genOperations ecoreOperation="AndroidApp.ecore#//AndroidApplication/addComponent">
         <genParameters ecoreParameter="AndroidApp.ecore#//AndroidApplication/addComponent/component"/>
       </genOperations>
@@ -67,6 +74,7 @@
     </genClasses>
     <genClasses ecoreClass="AndroidApp.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//Model/androidApps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//Model/javaApps"/>
     </genClasses>
     <genClasses ecoreClass="AndroidApp.ecore#//Metadata">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//Metadata/name"/>
@@ -77,5 +85,36 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//GCMBroadcastReceiver/startIntentService"/>
     </genClasses>
     <genClasses ecoreClass="AndroidApp.ecore#//GCMActivity"/>
+    <genClasses image="false" ecoreClass="AndroidApp.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//Feature/name"/>
+      <genOperations ecoreOperation="AndroidApp.ecore#//Feature/componentAddedTo">
+        <genParameters ecoreParameter="AndroidApp.ecore#//Feature/componentAddedTo/app"/>
+      </genOperations>
+      <genOperations ecoreOperation="AndroidApp.ecore#//Feature/getTemplate"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidApp.ecore#//TopicManager"/>
+    <genClasses ecoreClass="AndroidApp.ecore#//JavaApplication">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//JavaApplication/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//JavaApplication/javaName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidApp.ecore#//JavaApplication/components"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//JavaApplication/minSDK"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//JavaApplication/targetSDK"/>
+      <genOperations ecoreOperation="AndroidApp.ecore#//JavaApplication/addComponent">
+        <genParameters ecoreParameter="AndroidApp.ecore#//JavaApplication/addComponent/component"/>
+      </genOperations>
+      <genOperations ecoreOperation="AndroidApp.ecore#//JavaApplication/dependsOn">
+        <genParameters ecoreParameter="AndroidApp.ecore#//JavaApplication/dependsOn/library"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="AndroidApp.ecore#//JavaComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidApp.ecore#//JavaComponent/name"/>
+      <genOperations ecoreOperation="AndroidApp.ecore#//JavaComponent/componentAddedTo">
+        <genParameters ecoreParameter="AndroidApp.ecore#//JavaComponent/componentAddedTo/app"/>
+      </genOperations>
+      <genOperations ecoreOperation="AndroidApp.ecore#//JavaComponent/getTemplate"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidApp.ecore#//GCMTopicManager"/>
+    <genClasses ecoreClass="AndroidApp.ecore#//GCMGroupManager"/>
+    <genClasses ecoreClass="AndroidApp.ecore#//GCMMessageManager"/>
   </genPackages>
 </genmodel:GenModel>

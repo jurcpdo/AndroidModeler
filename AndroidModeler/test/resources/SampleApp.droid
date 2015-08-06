@@ -5,6 +5,7 @@ app SampleApp minSDK=8 targetSDK=16 {
 		activity MainActivity
 		service GcmService
 		bcreceiver GcmReceiver
+		topicmanager TopicManager
 	}
 	
 	service FooService

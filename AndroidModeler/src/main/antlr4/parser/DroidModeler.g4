@@ -26,6 +26,8 @@ componentDefinition
 		activityDefinition
 		| serviceDefinition
 		| broadcastReceiverDefinition
+		| topicDefinition
+		| groupDefinition
 	)+
 ;
 
@@ -44,6 +46,16 @@ broadcastReceiverDefinition
 	'bcreceiver' name = ID
 ;
 
+topicDefinition
+:
+	'topicmanager' name = ID
+;
+
+groupDefinition
+:	
+	'groups' name = FLAG
+;
+
 featureDefinition
 :
 	gcmFeatureDefinition
@@ -56,6 +68,8 @@ gcmFeatureDefinition
 		activityDefinition
 		| serviceDefinition
 		| broadcastReceiverDefinition
+		| topicDefinition
+		| groupDefinition
 	)+ RBRACE
 ;
 
@@ -67,6 +81,12 @@ ID
 NUMBER
 :
 	[1-9] [0-9]*
+;
+
+FLAG
+:
+	'true'
+	| 'false'
 ;
 
 LBRACE

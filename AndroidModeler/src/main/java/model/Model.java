@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are supported:
  * <ul>
  * <li>{@link model.Model#getAndroidApps <em>Android Apps</em>}</li>
+ * <li>{@link model.Model#getJavaApps <em>Java Apps</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,6 +36,16 @@ public class Model extends MinimalEObjectImpl.Container implements EObject {
 	 * @ordered
 	 */
 	protected EList<AndroidApplication> androidApps;
+
+	/**
+	 * The cached value of the '{@link #getJavaApps() <em>Java Apps</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getJavaApps()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<JavaApplication> javaApps;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -78,6 +89,27 @@ public class Model extends MinimalEObjectImpl.Container implements EObject {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Java Apps</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link model.JavaApplication}. <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Java Apps</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the value of the '<em>Java Apps</em>' containment reference list.
+	 * @generated
+	 */
+	public EList<JavaApplication> getJavaApps() {
+		if (javaApps == null) {
+			javaApps = new BasicInternalEList<JavaApplication>(
+					JavaApplication.class);
+		}
+		return javaApps;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -88,6 +120,9 @@ public class Model extends MinimalEObjectImpl.Container implements EObject {
 		switch (featureID) {
 		case AndroidAppPackage.MODEL__ANDROID_APPS:
 			return ((InternalEList<?>) getAndroidApps()).basicRemove(otherEnd,
+					msgs);
+		case AndroidAppPackage.MODEL__JAVA_APPS:
+			return ((InternalEList<?>) getJavaApps()).basicRemove(otherEnd,
 					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -103,6 +138,8 @@ public class Model extends MinimalEObjectImpl.Container implements EObject {
 		switch (featureID) {
 		case AndroidAppPackage.MODEL__ANDROID_APPS:
 			return getAndroidApps();
+		case AndroidAppPackage.MODEL__JAVA_APPS:
+			return getJavaApps();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -121,6 +158,11 @@ public class Model extends MinimalEObjectImpl.Container implements EObject {
 			getAndroidApps().addAll(
 					(Collection<? extends AndroidApplication>) newValue);
 			return;
+		case AndroidAppPackage.MODEL__JAVA_APPS:
+			getJavaApps().clear();
+			getJavaApps().addAll(
+					(Collection<? extends JavaApplication>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -136,6 +178,9 @@ public class Model extends MinimalEObjectImpl.Container implements EObject {
 		case AndroidAppPackage.MODEL__ANDROID_APPS:
 			getAndroidApps().clear();
 			return;
+		case AndroidAppPackage.MODEL__JAVA_APPS:
+			getJavaApps().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -150,6 +195,8 @@ public class Model extends MinimalEObjectImpl.Container implements EObject {
 		switch (featureID) {
 		case AndroidAppPackage.MODEL__ANDROID_APPS:
 			return androidApps != null && !androidApps.isEmpty();
+		case AndroidAppPackage.MODEL__JAVA_APPS:
+			return javaApps != null && !javaApps.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
