@@ -23,6 +23,7 @@ public class TreeParser extends DroidModelerBaseListener {
 	private Model model = factory.createModel();
 	private AndroidApplication app;
 	private boolean inGcmDefinition = false;
+	private boolean GroupsOn = false;
 
 	private GCMBroadcastReceiver lastGCMRecv = null;
 	private GCMIntentService lastGCMIntentServ = null;
@@ -86,7 +87,10 @@ public class TreeParser extends DroidModelerBaseListener {
 		if (!inGcmDefinition) {
 			activity = factory.createActivity();
 		} else {
-			activity = factory.createGCMActivity();
+			if (GroupsOn)
+				activity = factory.createGCMActivity(true);
+			else
+				activity = factory.createGCMActivity();
 		}
 		activity.setName(ctx.name.getText());
 		app.addComponent(activity);
@@ -119,8 +123,7 @@ public class TreeParser extends DroidModelerBaseListener {
 
 	@Override
 	public void enterGroupDefinition(GroupDefinitionContext ctx) {
-		// TODO Auto-generated method stub
-		super.enterGroupDefinition(ctx);
+		GroupsOn = true;
 	}
 
 	public Model getModel() {

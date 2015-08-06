@@ -53,7 +53,7 @@ topicDefinition
 
 groupDefinition
 :	
-	'groups' name = FLAG
+	'groups' name = ID
 ;
 
 featureDefinition
@@ -81,12 +81,6 @@ ID
 NUMBER
 :
 	[1-9] [0-9]*
-;
-
-FLAG
-:
-	'true'
-	| 'false'
 ;
 
 LBRACE

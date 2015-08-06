@@ -2,6 +2,7 @@ package templates
 
 import model.AndroidApplication
 import model.Component
+import model.GCMActivity
 
 class GCMActivityTemplate implements ComponentTemplate {
 	private static var GCMActivityTemplate INSTANCE = null;
@@ -15,6 +16,7 @@ class GCMActivityTemplate implements ComponentTemplate {
 	}
 
 	override generate(AndroidApplication app, Component a) '''
+	«var ar = a as GCMActivity»
 /*
 	Generated with DroidModeler
  */
@@ -42,7 +44,7 @@ enum MessageSentStatus {
 	SUCCESS, FAIL;
 }
 
-public class «a.name» extends Activity {
+public class «ar.name» extends Activity {
 	static final String TAG = "«app.name»";
 
     public static final String EXTRA_MESSAGE = "message";
@@ -162,6 +164,22 @@ public class «a.name» extends Activity {
                 }
             }.execute(null, null, null);
     }
+	«IF ar.isGroupFlag()»
+	private String sendMessageGroup(Bundle data, String toGroup) {
+			new AsyncTask<Void, Void, Void>() {
+				@Override
+				protected Void doInBackground(Void... params) {
+					try {
+						String id = Integer.toString(msgId.incrementAndGet());
+						gcm.send(toGroup, id, data);
+						onMessageSent(SUCCESS, null);
+					} catch (IOException ex) {
+						onMessageSent(FAIL, ex);
+					}
+				}
+			}.execute(null, null, null);
+	}
+	«ENDIF»
 
     private static int getAppVersion(Context context) {
         try {
