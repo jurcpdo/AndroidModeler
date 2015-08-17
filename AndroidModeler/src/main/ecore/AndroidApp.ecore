@@ -94,8 +94,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="FeatureTemplate" instanceClassName="templates.FeatureTemplate"/>
   <eClassifiers xsi:type="ecore:EClass" name="TopicManager" eSuperTypes="#//Feature"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaApplication">
-    <eOperations name="addComponent">
-      <eParameters name="component" eType="#//Component"/>
+    <eOperations name="addJavaComponent">
+      <eParameters name="jcomponent" eType="#//JavaComponent"/>
     </eOperations>
     <eOperations name="dependsOn">
       <eParameters name="library" eType="#//Library"/>

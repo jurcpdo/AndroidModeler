@@ -5,7 +5,11 @@ import model.AndroidAppFactory;
 import model.AndroidApplication;
 import model.BroadcastReceiver;
 import model.GCMBroadcastReceiver;
+import model.GCMGroupManager;
 import model.GCMIntentService;
+import model.GCMMessageManager;
+import model.GCMTopicManager;
+import model.JavaApplication;
 import model.Model;
 import model.Service;
 import model.TopicManager;
@@ -13,8 +17,11 @@ import parser.DroidModelerParser.ActivityDefinitionContext;
 import parser.DroidModelerParser.AppDefinitionContext;
 import parser.DroidModelerParser.BroadcastReceiverDefinitionContext;
 import parser.DroidModelerParser.GcmFeatureDefinitionContext;
+import parser.DroidModelerParser.GcmServerFeatureDefinitionContext;
 import parser.DroidModelerParser.GroupDefinitionContext;
+import parser.DroidModelerParser.MessageDefinitionContext;
 import parser.DroidModelerParser.PackageDefinitionContext;
+import parser.DroidModelerParser.ServerAppDefinitionContext;
 import parser.DroidModelerParser.ServiceDefinitionContext;
 import parser.DroidModelerParser.TopicDefinitionContext;
 
@@ -22,7 +29,9 @@ public class TreeParser extends DroidModelerBaseListener {
 	private AndroidAppFactory factory = new AndroidAppFactory();
 	private Model model = factory.createModel();
 	private AndroidApplication app;
+	private JavaApplication japp;
 	private boolean inGcmDefinition = false;
+	private boolean inGcmServerDefinition = false;
 	private boolean GroupsOn = false;
 
 	private GCMBroadcastReceiver lastGCMRecv = null;
@@ -44,6 +53,25 @@ public class TreeParser extends DroidModelerBaseListener {
 			app.setTargetSDK(targetSDK);
 		} else {
 			app.setTargetSDK(16);
+		}
+	}
+	
+	@Override
+	public void enterServerAppDefinition(ServerAppDefinitionContext ctx) {
+		japp = factory.createJavaApplication();
+		model.getJavaApps().add(japp);
+		japp.setName(ctx.name.getText());
+		if (ctx.minSDK != null) {
+			int minSDK = Integer.parseInt(ctx.minSDK.getText());
+			japp.setMinSDK(minSDK);
+		} else {
+			japp.setMinSDK(16);
+		}
+		if (ctx.targetSDK != null) {
+			int targetSDK = Integer.parseInt(ctx.targetSDK.getText());
+			japp.setTargetSDK(targetSDK);
+		} else {
+			japp.setTargetSDK(16);
 		}
 	}
 
@@ -110,20 +138,52 @@ public class TreeParser extends DroidModelerBaseListener {
 		if (lastGCMIntentServ != null)
 			lastGCMRecv.setStartIntentService(lastGCMIntentServ);
 	}
-	
+		
+	@Override
+	public void enterGcmServerFeatureDefinition(GcmServerFeatureDefinitionContext ctx) {
+		inGcmDefinition = true;
+	}
+
+	@Override
+	public void exitGcmServerFeatureDefinition(GcmServerFeatureDefinitionContext ctx) {
+		inGcmDefinition = false;
+	}
+
 	@Override
 	public void enterTopicDefinition(TopicDefinitionContext ctx) {
-		TopicManager topics = null;
 		if (inGcmDefinition) {
+			TopicManager topics = null;
 			topics = factory.createTopicManager();
 			topics.setName(ctx.name.getText());
 			app.addFeature(topics);
+		} else if (inGcmServerDefinition){
+			GCMTopicManager gcmtopics = null;
+			gcmtopics = factory.createGCMTopicManager();
+			gcmtopics.setName(ctx.name.getText());
+			japp.addJavaComponent(gcmtopics);
 		}
 	}
 
 	@Override
 	public void enterGroupDefinition(GroupDefinitionContext ctx) {
-		GroupsOn = true;
+		if (inGcmDefinition) {
+			GroupsOn = true;
+		} else if (inGcmServerDefinition){
+			GCMGroupManager gcmgoups = null;
+			gcmgoups = factory.createGCMGroupManager();
+			gcmgoups.setName(ctx.name.getText());
+			japp.addJavaComponent(gcmgoups);
+		}
+	}
+	
+	@Override
+	public void enterMessageDefinition(MessageDefinitionContext ctx) {
+		if (inGcmServerDefinition){
+			GCMMessageManager gcmmessage = null;
+			gcmmessage = factory.createGCMMessageManager();
+			gcmmessage.setName(ctx.name.getText());
+			japp.addJavaComponent(gcmmessage);
+		}
 	}
 
 	public Model getModel() {

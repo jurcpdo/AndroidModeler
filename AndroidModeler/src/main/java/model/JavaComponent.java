@@ -100,24 +100,18 @@ public abstract class JavaComponent extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	public void componentAddedTo(JavaApplication app) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		// Override to implement event handling in subclasses
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
-	public JavaComponentTemplate getTemplate() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	public abstract JavaComponentTemplate getTemplate();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

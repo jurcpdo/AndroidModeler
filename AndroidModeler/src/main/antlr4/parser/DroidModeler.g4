@@ -15,6 +15,21 @@ appDefinition
 	)+ RBRACE
 ;
 
+serverAppDefinition
+:
+	'serverapp' name = ID
+	(
+		'minSDK=' minSDK = NUMBER
+	)?
+	(
+		'targetSDK=' targetSDK = NUMBER
+	)? LBRACE packageDefinition
+	(
+		componentDefinition
+		| featureDefinition
+	)+ RBRACE
+;
+
 packageDefinition
 :
 	'pkg' name = ID
@@ -56,9 +71,15 @@ groupDefinition
 	'groups' name = ID
 ;
 
+messageDefinition
+:
+	'message' name = ID
+;
+
 featureDefinition
 :
 	gcmFeatureDefinition
+	| gcmServerFeatureDefinition
 ;
 
 gcmFeatureDefinition
@@ -68,6 +89,16 @@ gcmFeatureDefinition
 		activityDefinition
 		| serviceDefinition
 		| broadcastReceiverDefinition
+		| topicDefinition
+		| groupDefinition
+	)+ RBRACE
+;
+
+gcmServerFeatureDefinition
+:
+	'gcmserver' LBRACE
+	(
+		messageDefinition
 		| topicDefinition
 		| groupDefinition
 	)+ RBRACE

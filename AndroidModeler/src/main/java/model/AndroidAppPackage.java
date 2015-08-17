@@ -1259,13 +1259,13 @@ public class AndroidAppPackage extends EPackageImpl {
 	public static final int JAVA_APPLICATION_FEATURE_COUNT = 5;
 
 	/**
-	 * The operation id for the '<em>Add Component</em>' operation. <!--
+	 * The operation id for the '<em>Add Java Component</em>' operation. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	public static final int JAVA_APPLICATION___ADD_COMPONENT__COMPONENT = 0;
+	public static final int JAVA_APPLICATION___ADD_JAVA_COMPONENT__JAVACOMPONENT = 0;
 
 	/**
 	 * The operation id for the '<em>Depends On</em>' operation. <!--
@@ -2622,7 +2622,7 @@ public class AndroidAppPackage extends EPackageImpl {
 		createEAttribute(javaApplicationEClass, JAVA_APPLICATION__MIN_SDK);
 		createEAttribute(javaApplicationEClass, JAVA_APPLICATION__TARGET_SDK);
 		createEOperation(javaApplicationEClass,
-				JAVA_APPLICATION___ADD_COMPONENT__COMPONENT);
+				JAVA_APPLICATION___ADD_JAVA_COMPONENT__JAVACOMPONENT);
 		createEOperation(javaApplicationEClass,
 				JAVA_APPLICATION___DEPENDS_ON__LIBRARY);
 
@@ -2935,10 +2935,11 @@ public class AndroidAppPackage extends EPackageImpl {
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getJavaApplication__AddComponent__Component(),
-				null, "addComponent", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getComponent(), "component", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
+		op = initEOperation(
+				getJavaApplication__AddJavaComponent__JavaComponent(), null,
+				"addJavaComponent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJavaComponent(), "jcomponent", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getJavaApplication__DependsOn__Library(), null,
 				"dependsOn", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3135,15 +3136,15 @@ public class AndroidAppPackage extends EPackageImpl {
 
 	/**
 	 * Returns the meta object for the '
-	 * {@link model.JavaApplication#addComponent(model.Component)
-	 * <em>Add Component</em>}' operation. <!-- begin-user-doc --> <!--
+	 * {@link model.JavaApplication#addJavaComponent(model.JavaComponent)
+	 * <em>Add Java Component</em>}' operation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
-	 * @return the meta object for the '<em>Add Component</em>' operation.
-	 * @see model.JavaApplication#addComponent(model.Component)
+	 * @return the meta object for the '<em>Add Java Component</em>' operation.
+	 * @see model.JavaApplication#addJavaComponent(model.JavaComponent)
 	 * @generated
 	 */
-	public EOperation getJavaApplication__AddComponent__Component() {
+	public EOperation getJavaApplication__AddJavaComponent__JavaComponent() {
 		return javaApplicationEClass.getEOperations().get(0);
 	}
 

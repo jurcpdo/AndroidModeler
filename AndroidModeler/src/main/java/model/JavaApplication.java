@@ -290,12 +290,11 @@ public class JavaApplication extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
-	public void addComponent(Component component) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void addJavaComponent(JavaComponent jcomponent) {
+		getComponents().add(jcomponent);
+		jcomponent.componentAddedTo(this);
 	}
 
 	/**
@@ -421,8 +420,8 @@ public class JavaApplication extends MinimalEObjectImpl.Container implements
 	public Object eInvoke(int operationID, EList<?> arguments)
 			throws InvocationTargetException {
 		switch (operationID) {
-		case AndroidAppPackage.JAVA_APPLICATION___ADD_COMPONENT__COMPONENT:
-			addComponent((Component) arguments.get(0));
+		case AndroidAppPackage.JAVA_APPLICATION___ADD_JAVA_COMPONENT__JAVACOMPONENT:
+			addJavaComponent((JavaComponent) arguments.get(0));
 			return null;
 		case AndroidAppPackage.JAVA_APPLICATION___DEPENDS_ON__LIBRARY:
 			dependsOn((Library) arguments.get(0));

@@ -15,8 +15,9 @@ import templates.GCMActivityTemplate;
  * @generated
  */
 public class GCMActivity extends Activity {
-	
+
 	private boolean GroupFlag = false;
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -25,7 +26,7 @@ public class GCMActivity extends Activity {
 	protected GCMActivity() {
 		super();
 	}
-	
+
 	protected GCMActivity(boolean GroupsOn) {
 		super();
 		setGroupFlag(true);

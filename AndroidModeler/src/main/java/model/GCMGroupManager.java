@@ -4,6 +4,9 @@ package model;
 
 import org.eclipse.emf.ecore.EClass;
 
+import templates.JavaComponentTemplate;
+import templates.GCMGroupManagerTemplate;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>GCM Group Manager</b></em>'. <!-- end-user-doc -->
@@ -29,6 +32,11 @@ public class GCMGroupManager extends JavaComponent {
 	@Override
 	protected EClass eStaticClass() {
 		return AndroidAppPackage.eINSTANCE.getGCMGroupManager();
+	}
+
+	@Override
+	public JavaComponentTemplate getTemplate() {
+		return GCMGroupManagerTemplate.getInstance();
 	}
 
 } // GCMGroupManager

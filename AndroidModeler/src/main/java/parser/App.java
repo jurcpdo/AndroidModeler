@@ -11,6 +11,8 @@ import java.nio.file.Paths;
 import model.AndroidApplication;
 import model.Component;
 import model.Feature;
+import model.JavaApplication;
+import model.JavaComponent;
 import model.Model;
 
 import org.antlr.v4.runtime.ANTLRFileStream;
@@ -21,6 +23,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import templates.ComponentTemplate;
 import templates.GradleTemplate;
+import templates.JavaComponentTemplate;
 import templates.ManifestTemplate;
 import templates.FeatureTemplate;
 import util.*;
@@ -57,24 +60,42 @@ public class App {
 		Model model = listener.getModel();
 
 		AndroidApplication app = null;
+		JavaApplication japp = null;
 		Path classDir = null;
 		try {
-			Path basePath = Paths.get("generated-client");
-			Files.createDirectories(basePath);
 			app = model.getAndroidApps().get(0);
-
-			Path gradleFile = basePath.resolve("build.gradle");
-			writeToFile(gradleFile, GradleTemplate.getInstance().generate(app));
-
-			Path mainSourceDir = basePath.resolve("src/main");
-			Files.createDirectories(mainSourceDir);
-			Path manifestFile = mainSourceDir.resolve("AndroidManifest.xml");
-			String manifestXml = ManifestTemplate.getInstance().generate(app);
-			writeToFile(manifestFile, XMLFormatter.format(manifestXml));
-
-			Path javaDir = mainSourceDir.resolve("java");
-			classDir = javaDir.resolve(app.getJavaName().replace(".", "/"));
-			Files.createDirectories(classDir);
+			japp = model.getJavaApps().get(0);
+			if (app != null){
+				Path basePath = Paths.get("generated-client");
+				Files.createDirectories(basePath);
+				
+				Path gradleFile = basePath.resolve("build.gradle");
+				writeToFile(gradleFile, GradleTemplate.getInstance().generate(app));
+	
+				Path mainSourceDir = basePath.resolve("src/main");
+				Files.createDirectories(mainSourceDir);
+				Path manifestFile = mainSourceDir.resolve("AndroidManifest.xml");
+				String manifestXml = ManifestTemplate.getInstance().generate(app);
+				writeToFile(manifestFile, XMLFormatter.format(manifestXml));
+	
+				Path javaDir = mainSourceDir.resolve("java");
+				classDir = javaDir.resolve(app.getJavaName().replace(".", "/"));
+				Files.createDirectories(classDir);
+			}
+			if (japp != null){
+				Path basePath = Paths.get("generated-server");
+				Files.createDirectories(basePath);
+					
+				Path mainSourceDir = basePath.resolve("src/main");
+				Files.createDirectories(mainSourceDir);
+				//Path manifestFile = mainSourceDir.resolve("AndroidManifest.xml");
+				//String manifestXml = ManifestTemplate.getInstance().generate(japp);
+				//writeToFile(manifestFile, XMLFormatter.format(manifestXml));
+	
+				Path javaDir = mainSourceDir.resolve("java");
+				classDir = javaDir.resolve(japp.getJavaName().replace(".", "/"));
+				Files.createDirectories(classDir);
+			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -90,6 +111,13 @@ public class App {
 			FeatureTemplate template = f.getTemplate();
 			String code = template.generate(app, f);
 			Path classFile = classDir.resolve(f.getName() + ".java");
+			writeToFile(classFile, code);
+		}
+		
+		for (JavaComponent j : japp.getComponents()) {
+			JavaComponentTemplate template = j.getTemplate();
+			String code = template.generate(japp, j);
+			Path classFile = classDir.resolve(j.getName() + ".java");
 			writeToFile(classFile, code);
 		}
 	}

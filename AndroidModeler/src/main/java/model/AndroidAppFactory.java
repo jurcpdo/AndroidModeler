@@ -309,7 +309,7 @@ public class AndroidAppFactory extends EFactoryImpl {
 		GCMActivity gcmActivity = new GCMActivity();
 		return gcmActivity;
 	}
-	
+
 	public GCMActivity createGCMActivity(boolean GroupsOn) {
 		GCMActivity gcmActivity = new GCMActivity(true);
 		return gcmActivity;
