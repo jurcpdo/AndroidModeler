@@ -1342,62 +1342,6 @@ public class AndroidAppPackage extends EPackageImpl {
 	public static final int JAVA_COMPONENT_OPERATION_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link model.GCMTopicManager
-	 * <em>GCM Topic Manager</em>}' class. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @see model.GCMTopicManager
-	 * @see model.AndroidAppPackage#getGCMTopicManager()
-	 * @generated
-	 */
-	public static final int GCM_TOPIC_MANAGER = 20;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	public static final int GCM_TOPIC_MANAGER__NAME = JAVA_COMPONENT__NAME;
-
-	/**
-	 * The number of structural features of the '<em>GCM Topic Manager</em>'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	public static final int GCM_TOPIC_MANAGER_FEATURE_COUNT = JAVA_COMPONENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Component Added To</em>' operation. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	public static final int GCM_TOPIC_MANAGER___COMPONENT_ADDED_TO__JAVAAPPLICATION = JAVA_COMPONENT___COMPONENT_ADDED_TO__JAVAAPPLICATION;
-
-	/**
-	 * The operation id for the '<em>Get Template</em>' operation. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	public static final int GCM_TOPIC_MANAGER___GET_TEMPLATE = JAVA_COMPONENT___GET_TEMPLATE;
-
-	/**
-	 * The number of operations of the '<em>GCM Topic Manager</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	public static final int GCM_TOPIC_MANAGER_OPERATION_COUNT = JAVA_COMPONENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link model.GCMGroupManager
 	 * <em>GCM Group Manager</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -1406,7 +1350,7 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @see model.AndroidAppPackage#getGCMGroupManager()
 	 * @generated
 	 */
-	public static final int GCM_GROUP_MANAGER = 21;
+	public static final int GCM_GROUP_MANAGER = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1462,7 +1406,7 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @see model.AndroidAppPackage#getGCMMessageManager()
 	 * @generated
 	 */
-	public static final int GCM_MESSAGE_MANAGER = 22;
+	public static final int GCM_MESSAGE_MANAGER = 21;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1517,7 +1461,7 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @see model.AndroidAppPackage#getComponentTemplate()
 	 * @generated
 	 */
-	public static final int COMPONENT_TEMPLATE = 23;
+	public static final int COMPONENT_TEMPLATE = 22;
 
 	/**
 	 * The meta object id for the '<em>Feature Template</em>' data type. <!--
@@ -1527,7 +1471,7 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @see model.AndroidAppPackage#getFeatureTemplate()
 	 * @generated
 	 */
-	public static final int FEATURE_TEMPLATE = 24;
+	public static final int FEATURE_TEMPLATE = 23;
 
 	/**
 	 * The meta object id for the '<em>Java Component Template</em>' data type.
@@ -1537,7 +1481,7 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @see model.AndroidAppPackage#getJavaComponentTemplate()
 	 * @generated
 	 */
-	public static final int JAVA_COMPONENT_TEMPLATE = 25;
+	public static final int JAVA_COMPONENT_TEMPLATE = 24;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1587,13 +1531,6 @@ public class AndroidAppPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass javaComponentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	private EClass gcmTopicManagerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2632,8 +2569,6 @@ public class AndroidAppPackage extends EPackageImpl {
 				JAVA_COMPONENT___COMPONENT_ADDED_TO__JAVAAPPLICATION);
 		createEOperation(javaComponentEClass, JAVA_COMPONENT___GET_TEMPLATE);
 
-		gcmTopicManagerEClass = createEClass(GCM_TOPIC_MANAGER);
-
 		gcmGroupManagerEClass = createEClass(GCM_GROUP_MANAGER);
 
 		gcmMessageManagerEClass = createEClass(GCM_MESSAGE_MANAGER);
@@ -2681,7 +2616,6 @@ public class AndroidAppPackage extends EPackageImpl {
 				this.getBroadcastReceiver());
 		gcmActivityEClass.getESuperTypes().add(this.getActivity());
 		topicManagerEClass.getESuperTypes().add(this.getFeature());
-		gcmTopicManagerEClass.getESuperTypes().add(this.getJavaComponent());
 		gcmGroupManagerEClass.getESuperTypes().add(this.getJavaComponent());
 		gcmMessageManagerEClass.getESuperTypes().add(this.getJavaComponent());
 
@@ -2963,10 +2897,6 @@ public class AndroidAppPackage extends EPackageImpl {
 				this.getJavaComponentTemplate(), "getTemplate", 1, 1,
 				IS_UNIQUE, IS_ORDERED);
 
-		initEClass(gcmTopicManagerEClass, GCMTopicManager.class,
-				"GCMTopicManager", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(gcmGroupManagerEClass, GCMGroupManager.class,
 				"GCMGroupManager", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -3213,19 +3143,6 @@ public class AndroidAppPackage extends EPackageImpl {
 	 */
 	public EOperation getJavaComponent__GetTemplate() {
 		return javaComponentEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * Returns the meta object for class '{@link model.GCMTopicManager
-	 * <em>GCM Topic Manager</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @return the meta object for class '<em>GCM Topic Manager</em>'.
-	 * @see model.GCMTopicManager
-	 * @generated
-	 */
-	public EClass getGCMTopicManager() {
-		return gcmTopicManagerEClass;
 	}
 
 	/**

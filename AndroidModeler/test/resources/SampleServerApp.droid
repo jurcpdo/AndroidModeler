@@ -1,11 +1,8 @@
-app ServerApp minSDK=8 targetSDK=16 {
+serverapp Teste minSDK=8 targetSDK=16 {
 	pkg server.app
 	
 	gcmserver {
 		groups Gcmgroups
-		topics Gcmtopics
 		message Gcmmessages
 	}
-	
-	service FooService
 }

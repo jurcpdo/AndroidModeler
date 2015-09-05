@@ -99,7 +99,6 @@ gcmServerFeatureDefinition
 	'gcmserver' LBRACE
 	(
 		messageDefinition
-		| topicDefinition
 		| groupDefinition
 	)+ RBRACE
 ;

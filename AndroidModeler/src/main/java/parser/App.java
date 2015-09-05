@@ -52,8 +52,17 @@ public class App {
 		DroidModelerLexer lexer = new DroidModelerLexer(charStream);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		DroidModelerParser parser = new DroidModelerParser(tokens);
-
-		ParserRuleContext tree = parser.appDefinition();
+		
+		ParserRuleContext tree = null;
+		
+		String choice;
+		choice = charStream.toString();
+		if (choice.startsWith("a")){
+			tree = parser.appDefinition();
+		} else {
+			tree = parser.serverAppDefinition();
+		}
+		
 		ParseTreeWalker walker = new ParseTreeWalker();
 		TreeParser listener = new TreeParser();
 		walker.walk(listener, tree);
@@ -63,8 +72,13 @@ public class App {
 		JavaApplication japp = null;
 		Path classDir = null;
 		try {
-			app = model.getAndroidApps().get(0);
-			japp = model.getJavaApps().get(0);
+			try {
+				japp = model.getJavaApps().get(0);
+			} catch(Exception e) {
+				app = model.getAndroidApps().get(0);
+			}
+			
+			
 			if (app != null){
 				Path basePath = Paths.get("generated-client");
 				Files.createDirectories(basePath);
@@ -81,6 +95,21 @@ public class App {
 				Path javaDir = mainSourceDir.resolve("java");
 				classDir = javaDir.resolve(app.getJavaName().replace(".", "/"));
 				Files.createDirectories(classDir);
+				
+				for (Component c : app.getComponents()) {
+					ComponentTemplate template = c.getTemplate();
+					String code = template.generate(app, c);
+					Path classFile = classDir.resolve(c.getName() + ".java");
+					writeToFile(classFile, code);
+				}
+				
+				for (Feature f : app.getFeature()) {
+					FeatureTemplate template = f.getTemplate();
+					String code = template.generate(app, f);
+					Path classFile = classDir.resolve(f.getName() + ".java");
+					writeToFile(classFile, code);
+				}
+				
 			}
 			if (japp != null){
 				Path basePath = Paths.get("generated-server");
@@ -95,31 +124,19 @@ public class App {
 				Path javaDir = mainSourceDir.resolve("java");
 				classDir = javaDir.resolve(japp.getJavaName().replace(".", "/"));
 				Files.createDirectories(classDir);
+				
+				for (JavaComponent j : japp.getComponents()) {
+					JavaComponentTemplate template = j.getTemplate();
+					String code = template.generate(japp, j);
+					Path classFile = classDir.resolve(j.getName() + ".java");
+					writeToFile(classFile, code);
+				}
+				
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 
-		for (Component c : app.getComponents()) {
-			ComponentTemplate template = c.getTemplate();
-			String code = template.generate(app, c);
-			Path classFile = classDir.resolve(c.getName() + ".java");
-			writeToFile(classFile, code);
-		}
-		
-		for (Feature f : app.getFeature()) {
-			FeatureTemplate template = f.getTemplate();
-			String code = template.generate(app, f);
-			Path classFile = classDir.resolve(f.getName() + ".java");
-			writeToFile(classFile, code);
-		}
-		
-		for (JavaComponent j : japp.getComponents()) {
-			JavaComponentTemplate template = j.getTemplate();
-			String code = template.generate(japp, j);
-			Path classFile = classDir.resolve(j.getName() + ".java");
-			writeToFile(classFile, code);
-		}
 	}
 
 	public static void writeToFile(Path path, String content) {

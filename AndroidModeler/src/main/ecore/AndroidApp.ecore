@@ -115,7 +115,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaComponentTemplate" instanceClassName="templates.JavaComponentTemplate"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GCMTopicManager" eSuperTypes="#//JavaComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="GCMGroupManager" eSuperTypes="#//JavaComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="GCMMessageManager" eSuperTypes="#//JavaComponent"/>
 </ecore:EPackage>

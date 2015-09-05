@@ -106,8 +106,6 @@ public class AndroidAppFactory extends EFactoryImpl {
 			return createTopicManager();
 		case AndroidAppPackage.JAVA_APPLICATION:
 			return createJavaApplication();
-		case AndroidAppPackage.GCM_TOPIC_MANAGER:
-			return createGCMTopicManager();
 		case AndroidAppPackage.GCM_GROUP_MANAGER:
 			return createGCMGroupManager();
 		case AndroidAppPackage.GCM_MESSAGE_MANAGER:
@@ -333,16 +331,6 @@ public class AndroidAppFactory extends EFactoryImpl {
 	public JavaApplication createJavaApplication() {
 		JavaApplication javaApplication = new JavaApplication();
 		return javaApplication;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public GCMTopicManager createGCMTopicManager() {
-		GCMTopicManager gcmTopicManager = new GCMTopicManager();
-		return gcmTopicManager;
 	}
 
 	/**

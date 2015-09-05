@@ -8,7 +8,6 @@ import model.GCMBroadcastReceiver;
 import model.GCMGroupManager;
 import model.GCMIntentService;
 import model.GCMMessageManager;
-import model.GCMTopicManager;
 import model.JavaApplication;
 import model.Model;
 import model.Service;
@@ -77,7 +76,11 @@ public class TreeParser extends DroidModelerBaseListener {
 
 	@Override
 	public void enterPackageDefinition(PackageDefinitionContext ctx) {
-		app.setJavaName(ctx.name.getText());
+		if (app != null) {
+			app.setJavaName(ctx.name.getText());
+		} else if (japp != null) {
+			japp.setJavaName(ctx.name.getText());
+		}
 	}
 
 	@Override
@@ -141,12 +144,12 @@ public class TreeParser extends DroidModelerBaseListener {
 		
 	@Override
 	public void enterGcmServerFeatureDefinition(GcmServerFeatureDefinitionContext ctx) {
-		inGcmDefinition = true;
+		inGcmServerDefinition = true;
 	}
 
 	@Override
 	public void exitGcmServerFeatureDefinition(GcmServerFeatureDefinitionContext ctx) {
-		inGcmDefinition = false;
+		inGcmServerDefinition = false;
 	}
 
 	@Override
@@ -156,11 +159,6 @@ public class TreeParser extends DroidModelerBaseListener {
 			topics = factory.createTopicManager();
 			topics.setName(ctx.name.getText());
 			app.addFeature(topics);
-		} else if (inGcmServerDefinition){
-			GCMTopicManager gcmtopics = null;
-			gcmtopics = factory.createGCMTopicManager();
-			gcmtopics.setName(ctx.name.getText());
-			japp.addJavaComponent(gcmtopics);
 		}
 	}
 
@@ -169,10 +167,10 @@ public class TreeParser extends DroidModelerBaseListener {
 		if (inGcmDefinition) {
 			GroupsOn = true;
 		} else if (inGcmServerDefinition){
-			GCMGroupManager gcmgoups = null;
-			gcmgoups = factory.createGCMGroupManager();
-			gcmgoups.setName(ctx.name.getText());
-			japp.addJavaComponent(gcmgoups);
+			GCMGroupManager gcmgroups = null;
+			gcmgroups = factory.createGCMGroupManager();
+			gcmgroups.setName(ctx.name.getText());
+			japp.addJavaComponent(gcmgroups);
 		}
 	}
 	
@@ -185,6 +183,7 @@ public class TreeParser extends DroidModelerBaseListener {
 			japp.addJavaComponent(gcmmessage);
 		}
 	}
+	
 
 	public Model getModel() {
 		return model;
